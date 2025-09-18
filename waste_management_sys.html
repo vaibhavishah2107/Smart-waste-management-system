@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Waste Management</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Custom CSS for the Smart Waste Management site */
+        .site-header {
+            position: sticky;
+            top: 0;
+            z-index: 40;
+            background-color: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(5px);
+            border-bottom: 1px solid #e5e7eb;
+        }
+        
+        .hero-section {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-background {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to bottom right, #dcfce7, #fff, #d1fae5);
+        }
+        
+        .feature-card, .step-card, .stat-card, .faq-item, .question-form, .chat-window {
+            border-radius: 1rem;
+            border: 1px solid #e5e7eb;
+            background-color: #fff;
+            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+        }
+        
+        .btn-primary {
+            background-color: #16a34a;
+            color: white;
+            border-radius: 1rem;
+            padding: 0.5rem 1.25rem;
+            font-weight: 500;
+            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+            transition: background-color 0.2s;
+        }
+        
+        .btn-primary:hover {
+            background-color: #15803d;
+        }
+        
+        .btn-secondary {
+            background-color: #fff;
+            color: #374151;
+            border: 1px solid #e5e7eb;
+            border-radius: 1rem;
+            padding: 0.5rem 1.25rem;
+            font-weight: 500;
+            transition: background-color 0.2s;
+        }
+        
+        .btn-secondary:hover {
+            background-color: #f9fafb;
+        }
+        
+        .data-section {
+            background: linear-gradient(to bottom, #fff, #f0fdf4);
+            border-top: 1px solid #e5e7eb;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        
+        .chat-bubble-user {
+            background-color: #16a34a;
+            color: white;
+            border-radius: 1rem;
+            padding: 0.5rem 0.75rem;
+            font-size: 0.875rem;
+            display: inline-block;
+            text-align: right;
+        }
+        
+        .chat-bubble-assistant {
+            background-color: #f3f4f6;
+            color: #374151;
+            border-radius: 1rem;
+            padding: 0.5rem 0.75rem;
+            font-size: 0.875rem;
+            display: inline-block;
+            text-align: left;
+        }
+        
+        .progress-bar {
+            background-color: #e5e7eb;
+            border-radius: 9999px;
+            overflow: hidden;
+            height: 0.5rem;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background-color: #16a34a;
+            border-radius: 9999px;
+        }
+        
+        /* Animation for chatbot */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .fade-in {
+            animation: fadeIn 0.3s ease-in-out;
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .hero-content {
+                padding-top: 4rem;
+                padding-bottom: 4rem;
+            }
+            
+            .step-card, .feature-card {
+                margin-bottom: 1rem;
+            }
+        }
+    </style>
+</head>
+<body class="min-h-screen bg-gray-50 text-gray-900">
+    <!-- Site Header -->
+    <header class="site-header">
+        <div class="max-w-6xl mx-auto flex items-center justify-between p-4">
+            <div class="flex items-center gap-3">
+                <div class="h-10 w-10 rounded-2xl bg-green-600 flex items-center justify-center text-white font-bold">SW</div>
+                <div class="leading-tight">
+                    <div class="font-bold">Smart Waste</div>
+                    <div class="text-xs text-gray-500">Clean city, smart city</div>
+                </div>
+            </div>
+            <nav class="hidden md:flex items-center gap-6 text-sm">
+                <a href="#about" class="hover:text-green-700">About</a>
+                <a href="#how" class="hover:text-green-700">How it works</a>
+                <a href="#features" class="hover:text-green-700">Features</a>
+                <a href="#data" class="hover:text-green-700">Data</a>
+                <a href="#faq" class="hover:text-green-700">FAQ</a>
+                <a href="#ask" class="hover:text-green-700">Ask a Question</a>
+            </nav>
+            <a href="#ask" class="btn-primary">Get Help</a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="hero-background"></div>
+        <div class="relative max-w-6xl mx-auto px-4 py-16 md:py-24 grid md:grid-cols-2 gap-10 items-center">
+            <div>
+                <h1 class="text-4xl md:text-5xl font-extrabold leading-tight">
+                    Smart Waste Management for Sustainable Cities
+                </h1>
+                <p class="mt-4 text-gray-700 text-lg">
+                    Monitor fill levels, optimize collection routes, and empower citizens with a
+                    transparent, data-driven waste system.
+                </p>
+                <div class="mt-6 flex flex-wrap gap-3">
+                    <a href="#features" class="btn-primary">Explore Features</a>
+                    <a href="#ask" class="btn-secondary">Ask a Question</a>
+                </div>
+                <ul class="mt-8 grid grid-cols-2 gap-4 text-sm text-gray-600">
+                    <li class="flex items-center gap-2"><span class="h-2 w-2 rounded-full bg-green-600"></span>IoT fill sensors</li>
+                    <li class="flex items-center gap-2"><span class="h-2 w-2 rounded-full bg-green-600"></span>GPS-optimized routes</li>
+                    <li class="flex items-center gap-2"><span class="h-2 w-2 rounded-full bg-green-600"></span>Citizen reporting</li>
+                    <li class="flex items-center gap-2"><span class="h-2 w-2 rounded-full bg-green-600"></span>Recycling insights</li>
+                </ul>
+            </div>
+            <div class="relative">
+                <div class="aspect-video rounded-2xl bg-white shadow-lg p-4 grid grid-cols-2 gap-4">
+                    <div class="feature-card p-3">
+                        <div class="text-xs text-gray-500">Organic</div>
+                        <div class="text-2xl font-bold">62%</div>
+                        <div class="progress-bar mt-2">
+                            <div class="progress-fill" style="width: 62%"></div>
+                        </div>
+                    </div>
+                    <div class="feature-card p-3">
+                        <div class="text-xs text-gray-500">Dry</div>
+                        <div class="text-2xl font-bold">38%</div>
+                        <div class="progress-bar mt-2">
+                            <div class="progress-fill" style="width: 38%"></div>
+                        </div>
+                    </div>
+                    <div class="feature-card p-3">
+                        <div class="text-xs text-gray-500">E-waste</div>
+                        <div class="text-2xl font-bold">4%</div>
+                        <div class="progress-bar mt-2">
+                            <div class="progress-fill" style="width: 4%"></div>
+                        </div>
+                    </div>
+                    <div class="feature-card p-3">
+                        <div class="text-xs text-gray-500">Plastic</div>
+                        <div class="text-2xl font-bold">19%</div>
+                        <div class="progress-bar mt-2">
+                            <div class="progress-fill" style="width: 19%"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="absolute -bottom-4 -right-4 bg-white rounded-xl shadow px-4 py-2 text-sm">
+                    Live bins monitored: <span class="font-semibold">1,248</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="max-w-6xl mx-auto px-4 py-16">
+        <h2 class="text-3xl font-bold">About the Waste System</h2>
+        <p class="mt-4 text-gray-700 leading-relaxed">
+            Our smart waste platform connects sensor-enabled bins, collection vehicles, and citizen
+            apps. It reduces overflowing bins, cuts fuel costs through optimized routing, and improves
+            recycling rates by giving households clear guidance. Municipal teams get dashboards and
+            alerts; citizens get transparency and a friendly assistant for quick answers.
+        </p>
+        <div class="mt-8 grid md:grid-cols-3 gap-6">
+            <div class="feature-card p-6">
+                <div class="text-green-700 font-semibold">Segregation</div>
+                <div class="mt-2 text-sm text-gray-600">Source-segregate into wet, dry, and hazardous to improve recycling.</div>
+            </div>
+            <div class="feature-card p-6">
+                <div class="text-green-700 font-semibold">Collection</div>
+                <div class="mt-2 text-sm text-gray-600">Dynamic routes based on fill level, traffic, and service windows.</div>
+            </div>
+            <div class="feature-card p-6">
+                <div class="text-green-700 font-semibold">Processing</div>
+                <div class="mt-2 text-sm text-gray-600">Composting for organics, MRFs for recyclables, safe e-waste hubs.</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section id="how" class="bg-white border-y">
+        <div class="max-w-6xl mx-auto px-4 py-16">
+            <h2 class="text-3xl font-bold">How it Works</h2>
+            <div class="mt-8 grid md:grid-cols-4 gap-6">
+                <div class="step-card p-6">
+                    <div class="text-xs text-gray-500">Step 01</div>
+                    <div class="mt-1 font-semibold">Sense</div>
+                    <p class="mt-2 text-sm text-gray-600">Ultrasonic and weight sensors measure fill and contamination levels in real time.</p>
+                </div>
+                <div class="step-card p-6">
+                    <div class="text-xs text-gray-500">Step 02</div>
+                    <div class="mt-1 font-semibold">Analyze</div>
+                    <p class="mt-2 text-sm text-gray-600">Edge + cloud analytics forecast pickups and detect anomalies.</p>
+                </div>
+                <div class="step-card p-6">
+                    <div class="text-xs text-gray-500">Step 03</div>
+                    <div class="mt-1 font-semibold">Optimize</div>
+                    <p class="mt-2 text-sm text-gray-600">Auto-generate collection routes to minimize distance and time.</p>
+                </div>
+                <div class="step-card p-6">
+                    <div class="text-xs text-gray-500">Step 04</div>
+                    <div class="mt-1 font-semibold">Engage</div>
+                    <p class="mt-2 text-sm text-gray-600">Citizens report issues and chat with an AI assistant for guidance.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="max-w-6xl mx-auto px-4 py-16">
+        <h2 class="text-3xl font-bold">Key Features</h2>
+        <div class="mt-8 grid md:grid-cols-3 gap-6">
+            <div class="feature-card p-6">
+                <div class="font-semibold text-green-700">Citizen App</div>
+                <div class="mt-2 text-sm text-gray-600">Reminders, pickup schedules, and educational tips.</div>
+            </div>
+            <div class="feature-card p-6">
+                <div class="font-semibold text-green-700">Hotspot Detection</div>
+                <div class="mt-2 text-sm text-gray-600">AI flags frequent overflow areas for proactive action.</div>
+            </div>
+            <div class="feature-card p-6">
+                <div class="font-semibold text-green-700">Fleet Telemetry</div>
+                <div class="mt-2 text-sm text-gray-600">GPS + fuel + route adherence in a single pane.</div>
+            </div>
+            <div class="feature-card p-6">
+                <div class="font-semibold text-green-700">Recycling Coach</div>
+                <div class="mt-2 text-sm text-gray-600">Ask what goes where; get instant answers from the chatbot.</div>
+            </div>
+            <div class="feature-card p-6">
+                <div class="font-semibold text-green-700">Open Data</div>
+                <div class="mt-2 text-sm text-gray-600">Share non-sensitive metrics with the public for accountability.</div>
+            </div>
+            <div class="feature-card p-6">
+                <div class="font-semibold text-green-700">Accessibility</div>
+                <div class="mt-2 text-sm text-gray-600">Multilingual UI, high contrast, screen-reader friendly.</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Data Snapshot Section -->
+    <section id="data" class="data-section">
+        <div class="max-w-6xl mx-auto px-4 py-16">
+            <h2 class="text-3xl font-bold">Live Data Snapshot</h2>
+            <div class="mt-6 grid sm:grid-cols-2 md:grid-cols-4 gap-6">
+                <div class="stat-card p-6 text-center">
+                    <div class="text-4xl font-extrabold">3<span class="text-xl font-semibold">/month</span></div>
+                    <div class="mt-2 text-sm text-gray-600">Missed pickups</div>
+                </div>
+                <div class="stat-card p-6 text-center">
+                    <div class="text-4xl font-extrabold">1<span class="text-xl font-semibold">/week</span></div>
+                    <div class="mt-2 text-sm text-gray-600">Overflow incidents</div>
+                </div>
+                <div class="stat-card p-6 text-center">
+                    <div class="text-4xl font-extrabold">18<span class="text-xl font-semibold">%</span></div>
+                    <div class="mt-2 text-sm text-gray-600">Fuel savings</div>
+                </div>
+                <div class="stat-card p-6 text-center">
+                    <div class="text-4xl font-extrabold">41<span class="text-xl font-semibold">%</span></div>
+                    <div class="mt-2 text-sm text-gray-600">Recycling rate</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="max-w-6xl mx-auto px-4 py-16">
+        <h2 class="text-3xl font-bold">Frequently Asked Questions</h2>
+        <div class="mt-6 space-y-3">
+            <div class="faq-item">
+                <button class="w-full text-left p-4 flex items-center justify-between">
+                    <span class="font-medium">What should I do with used batteries?</span>
+                    <span class="text-gray-500">+</span>
+                </button>
+            </div>
+            <div class="faq-item">
+                <button class="w-full text-left p-4 flex items-center justify-between">
+                    <span class="font-medium">How do I report an overflowing bin?</span>
+                    <span class="text-gray-500">+</span>
+                </button>
+            </div>
+            <div class="faq-item">
+                <button class="w-full text-left p-4 flex items-center justify-between">
+                    <span class="font-medium">What days are my pickups?</span>
+                    <span class="text-gray-500">+</span>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Ask Question Section -->
+    <section id="ask" class="max-w-6xl mx-auto px-4 py-16">
+        <h2 class="text-3xl font-bold">Ask a Question</h2>
+        <p class="mt-2 text-gray-600">Can't find it in the FAQ? Ask here—our team or the chatbot will help.</p>
+        <form class="question-form mt-6 grid md:grid-cols-2 gap-4 p-6">
+            <div>
+                <label class="text-sm text-gray-600">Name</label>
+                <input required class="mt-1 w-full rounded-xl border px-3 py-2">
+            </div>
+            <div>
+                <label class="text-sm text-gray-600">Email</label>
+                <input type="email" required class="mt-1 w-full rounded-xl border px-3 py-2">
+            </div>
+            <div class="md:col-span-2">
+                <label class="text-sm text-gray-600">Your question</label>
+                <textarea required class="mt-1 w-full rounded-xl border px-3 py-2 min-h-[120px]"></textarea>
+            </div>
+            <div class="md:col-span-2 flex items-center justify-between">
+                <button type="submit" class="btn-primary">Submit</button>
+                <span class="text-xs text-gray-500">.</span>
+            </div>
+        </form>
+    </section>
+
+    <!-- Footer -->
+    <footer class="border-t bg-white">
+        <div class="max-w-6xl mx-auto px-4 py-10 grid md:grid-cols-3 gap-8 text-sm">
+            <div>
+                <div class="font-bold">Smart Waste</div>
+                <p class="mt-2 text-gray-600">© 2023 Your Municipality</p>
+            </div>
+            <div>
+                <div class="font-semibold">Contact</div>
+                <p class="mt-2 text-gray-600">vaibhavishah2107@gmail.com • +91-00000-00000</p>
+            </div>
+            <div>
+                <div class="font-semibold">Links</div>
+                <ul class="mt-2 space-y-1">
+                    <li><a href="#features" class="hover:text-green-700">Features</a></li>
+                    <li><a href="#faq" class="hover:text-green-700">FAQ</a></li>
+                    <li><a href="#ask" class="hover:text-green-700">Ask a Question</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Chatbot Widget -->
+    <div class="fixed right-4 bottom-4 z-50">
+        <button class="rounded-full shadow-lg bg-green-600 text-white px-4 py-3 font-medium hover:bg-green-700">
+            Chat with us
+        </button>
+    </div>
+
+    <script>
+        // Simple JavaScript for FAQ toggle functionality
+        document.querySelectorAll('.faq-item button').forEach(button => {
+            button.addEventListener('click', function() {
+                const isOpen = this.querySelector('.text-gray-500').textContent === '−';
+                this.querySelector('.text-gray-500').textContent = isOpen ? '+' : '−';
+                
+                // For demo purposes, just toggle a simple answer
+                if (!isOpen) {
+                    const answer = document.createElement('div');
+                    answer.className = 'px-4 pb-4 text-sm text-gray-600';
+                    answer.textContent = 'This is a sample answer. In a real application, this would provide helpful information.';
+                    this.parentNode.appendChild(answer);
+                } else {
+                    this.parentNode.removeChild(this.parentNode.lastElementChild);
+                }
+            });
+        });
+
+        // Form submission handler
+        document.querySelector('.question-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for your question! In a real application, this would be saved.');
+            this.reset();
+        });
+    </script>
+</body>
+</html>
